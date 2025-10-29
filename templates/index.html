@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Medical Recommendation System</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="card">
+    <h1>🩺 Medical Recommendation System</h1>
+
+    <form action="/predict" method="post">
+      <label for="symptoms">Enter symptoms (comma-separated):</label>
+      <textarea id="symptoms" name="symptoms" placeholder="e.g., itching, skin_rash, headache">{{ user_input or '' }}</textarea>
+      <button type="submit">Predict</button>
+    </form>
+
+    {% if error %}
+      <div class="error">{{ error }}</div>
+    {% endif %}
+
+    {% if disease %}
+      <div class="result">
+        <h2>Predicted Disease: <span class="disease-name">{{ disease }}</span></h2>
+
+        <div class="section">
+          <h3>Description</h3>
+          <p>{{ description }}</p>
+        </div>
+
+        <div class="section">
+          <h3>Precautions</h3>
+          {% for p in precautions %}
+            <p>{{ p }}</p>
+          {% endfor %}
+        </div>
+
+        <div class="section">
+          <h3>Medications</h3>
+          {% for m in medicines %}
+            <p>{{ m }}</p>
+          {% endfor %}
+        </div>
+
+        <div class="section">
+          <h3>Diet</h3>
+          {% for d in diet %}
+            <p>{{ d }}</p>
+          {% endfor %}
+        </div>
+
+        <div class="section">
+          <h3>Workout</h3>
+          {% for w in workout %}
+            <p>{{ w }}</p>
+          {% endfor %}
+        </div>
+
+        <a class="back" href="/">← Back</a>
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+env/
+venv/
+.venv/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Environment/config files
+*.env
+*.DS_Store
+
+# Model files (optional: if they’re large, ignore them)
+*.joblib
+
+# Logs
+*.log
+
+# IDE settings
+.vscode/
+.idea/
+
+# Build / packaging
+dist/
+build/
+*.egg-info/
